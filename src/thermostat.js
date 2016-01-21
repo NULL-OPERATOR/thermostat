@@ -33,6 +33,13 @@ Thermostat.prototype._isMinTemp = function() {
   return this.temperature === this.MIN;
 }
 
+Thermostat.prototype.findMax = function() {
+  if (this.isPowerSaveOn()) {
+    return this.MAX_ON;
+  } else {
+    return this.MAX_OFF;
+  }
+}
 
 Thermostat.prototype.isPowerSaveOn = function() {
   return this.powerSave === true;
