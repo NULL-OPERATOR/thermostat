@@ -48,21 +48,16 @@ describe('Thermostat', function() {
       thermostat.powerSaveSwitch();
       expect(thermostat.isPowerSaveOn()).toBe(false);
     })
-  });
 
-  describe('when poweSave is on', function() {
-
-    it('has a max temp of 26 degrees', function() {
+    it('has a max temp of 26 degrees when on', function() {
       for (var i = 0; i < 7; i++) {
         thermostat.upTemp();
       }
       expect(thermostat.getTemp()).toEqual(26);
     });
-  });
 
-  describe('when poweSave is off', function() {
 
-    it('has a max temp of 36 degrees', function() {
+    it('has a max temp of 36 degrees when off', function() {
       thermostat.powerSaveSwitch();
       for (var i = 0; i < 17; i++) {
         thermostat.upTemp();
@@ -70,4 +65,5 @@ describe('Thermostat', function() {
       expect(thermostat.getTemp()).toEqual(36);
     });
   });
+
 });
