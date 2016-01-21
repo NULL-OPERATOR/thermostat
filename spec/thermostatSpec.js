@@ -1,58 +1,25 @@
-describe("Player", function() {
-  var player;
-  var song;
+'use strict';
+
+describe('Thermostat', function() {
+
+  var thermostat;
 
   beforeEach(function() {
-    player = new Player();
-    song = new Song();
+    thermostat = new Thermostat();
   });
 
-  it("should be able to play a Song", function() {
-    player.play(song);
-    expect(player.currentlyPlayingSong).toEqual(song);
+  it('starts at 20 degrees', function() {
+    expect(thermostat.getTemp()).toEqual(20);
+  })
 
-    //demonstrates use of custom matcher
-    expect(player).toBePlaying(song);
+  it('can increase in temperature', function() {
+    thermostat.upTemp();
+    expect(thermostat.getTemp()).toEqual(21);
   });
 
-  describe("when song has been paused", function() {
-    beforeEach(function() {
-      player.play(song);
-      player.pause();
-    });
-
-    it("should indicate that the song is currently paused", function() {
-      expect(player.isPlaying).toBeFalsy();
-
-      // demonstrates use of 'not' with a custom matcher
-      expect(player).not.toBePlaying(song);
-    });
-
-    it("should be possible to resume", function() {
-      player.resume();
-      expect(player.isPlaying).toBeTruthy();
-      expect(player.currentlyPlayingSong).toEqual(song);
-    });
+  it('can decrease in temperature', function() {
+    thermostat.downTemp();
+    expect(thermostat.getTemp()).toEqual(19);
   });
 
-  // demonstrates use of spies to intercept and test method calls
-  it("tells the current song if the user has made it a favorite", function() {
-    spyOn(song, 'persistFavoriteStatus');
-
-    player.play(song);
-    player.makeFavorite();
-
-    expect(song.persistFavoriteStatus).toHaveBeenCalledWith(true);
-  });
-
-  //demonstrates use of expected exceptions
-  describe("#resume", function() {
-    it("should throw an exception if song is already playing", function() {
-      player.play(song);
-
-      expect(function() {
-        player.resume();
-      }).toThrowError("song is already playing");
-    });
-  });
 });
