@@ -22,4 +22,19 @@ describe('Thermostat', function() {
     expect(thermostat.getTemp()).toEqual(19);
   });
 
+  it('has a minimun temperature of 5 degrees', function() {
+    for (var i = 0; i < 16; i++) {
+      thermostat.downTemp();
+    }
+    expect(thermostat.getTemp()).toEqual(5);
+  });
+
+  it('power save mode is on by default', function() {
+    expect(thermostat.isPowerSaveOn()).toBe(true);
+  });
+
+  it('powersave can be turned off', function() {
+    thermostat.powerSaveSwitch();
+    expect(thermostat.isPowerSaveOn()).toBe(false);
+  })
 });
