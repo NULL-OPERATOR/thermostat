@@ -1,22 +1,40 @@
 var flock;
-
 var text;
 
+function preload() {
+  $.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=a3d9eb01d4de82b9b8d0849ef604dbed', function(data) {
+  // var url = 'http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=a3d9eb01d4de82b9b8d0849ef604dbed',
+    // weather = loadJSON(url),
+    var dir = data.wind.deg;
+    var speed = data.wind.speed;
+    console.log(speed)
+  })
+}
+
+var canvas;
+
 function setup() {
+
+  canvas = createCanvas(windowWidth, windowHeight);
+
+  canvas.position(0, 0);
+  canvas.parent('weatha-boidz');
+  // canvas.class("weatha-boidz");
+
   // createCanvas(windowWidth, windowHeight);
-  noCanvas();
+  // noCanvas();
   // createCanvas(640,360);
   // createP("Drag the mouse to generate new boids.");
   flock = new Flock();
   // Add an initial set of boids into the system
   for (var i = 0; i < 100; i++) {
-    var b = new Boid(width/2,height/2);
+    var b = new Boid(width/1.3,height/1.3);
     flock.addBoid(b);
   }
 }
 
 function draw() {
-  background(51);
+  background(200,180,200);
   blendMode(OVERLAY);
 
   flock.run();
@@ -58,11 +76,11 @@ Flock.prototype.addBoid = function(b) {
 
 function Boid(x,y) {
   this.acceleration = createVector(0,0);
-  this.velocity = createVector(random(-1,1),random(-1,1));
+  this.velocity = createVector((0,0),(0,2));
   this.position = createVector(x,y);
   this.r = 3.0;
   this.maxspeed = 3;    // Maximum speed
-  this.maxforce = 0.05; // Maximum steering force
+  this.maxforce = 0.001; // Maximum steering force
 }
 
 Boid.prototype.run = function(boids) {
@@ -119,15 +137,15 @@ Boid.prototype.seek = function(target) {
 Boid.prototype.render = function() {
   // Draw a triangle rotated in the direction of velocity
   var theta = this.velocity.heading() + radians(90);
-  fill(127);
+  fill(200);
   stroke(200);
   push();
   translate(this.position.x,this.position.y);
   rotate(theta);
   beginShape();
-  vertex(0, -this.r*2);
-  vertex(-this.r, this.r*2);
-  vertex(this.r, this.r*2);
+  vertex(10, -this.r*20);
+  vertex(-this.r, this.r*3);
+  vertex(this.r, this.r*3);
   endShape(CLOSE);
   pop();
 }
