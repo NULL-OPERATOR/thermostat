@@ -4,13 +4,13 @@
       <meta charset="utf-8">
     <title>Interactive Thermostat</title>
     <link rel="stylesheet" type="text/css" href="public/style.css"/>
-    <link rel="stylesheet" type="text/css" href="js/jquery-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.min.css"/>
 
     <script src="js/p5.min.js"></script>
+    <script src="js/jquery/jquery-2.2.0.js"></script>
+    <script src="js/jquery-ui/jquery-ui.min.js"></script>
     <script src="js/sketch.js"></script>
-    <script src="js/jquery-2.2.0.js"></script>
-    <script src="js/jquery.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/flocking.js"></script>
     <script src="src/thermostat.js"></script>
     <script src="js/thermostatJquery.js"></script>
 
@@ -19,6 +19,18 @@
     <div id="draggable" class="ui-widget-content">
       <div id="slider"></div>
       drag me
+      <div>
+        Current temperature: <span id="location-temp"><span>
+      </div>
+      <div>
+        Wind direction: <span id="wind-direction"><span>
+      </div>
+      <div>
+        Wind speed: <span id="wind-speed"><span>
+      </div>
+      <div>
+        Location: <span id="location"><span>
+      </div>
     <!-- <section > -->
       <h1 id="temperature"></h1>
       <p>
