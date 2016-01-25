@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - 4.2.3
+  - 5.3.0
+env:
+  - DEBUG=zombie
+notifications:
+  email:
+    on_success: always
+    on_failure: always

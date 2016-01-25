@@ -1,0 +1,22 @@
+{
+  "name": "thermostat",
+  "authors": [
+    "NULL-OPERATOR <x@cryptolab.net>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "mocha": "~2.3.4",
+    "chai": "~3.4.2"
+  }
+}
